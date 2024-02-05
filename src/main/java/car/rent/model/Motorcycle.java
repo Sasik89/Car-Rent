@@ -82,4 +82,9 @@ public class Motorcycle extends Vehicle{
         return super.toString() +
                 ", additionalSeats = " + additionalSeats;
     }
+
+    @Override
+    public String convertToCSVString() {
+        return "Motorcycle;" + super.convertToCSVString() + ";" + this.additionalSeats;
+    }
 }

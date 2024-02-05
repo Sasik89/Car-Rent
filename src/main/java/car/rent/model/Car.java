@@ -71,4 +71,9 @@ public class Car extends Vehicle {
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public String convertToCSVString() {
+        return "Car;" + super.convertToCSVString();
+    }
 }

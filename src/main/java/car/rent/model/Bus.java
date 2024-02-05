@@ -92,4 +92,9 @@ public class Bus extends Vehicle {
         return super.toString() + ", seats = " + seats +
                 ", ticketMachine = " + ticketMachine;
     }
+
+    @Override
+    public String convertToCSVString() {
+        return "Bus;" + super.convertToCSVString() + ";" + this.seats + ";" + this.ticketMachine;
+    }
 }
