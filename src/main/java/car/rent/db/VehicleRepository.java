@@ -2,16 +2,17 @@ package car.rent.db;
 
 import car.rent.authenticator.Authenticate;
 import car.rent.model.*;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.Collection;
 import java.util.HashMap;
 
+@Component
 public class VehicleRepository implements IVehicleRepository{
 
     private final HashMap<String, Vehicle> vehicles = new HashMap<>();
-    private static final VehicleRepository instance = new VehicleRepository();
-    private VehicleRepository() {
+    VehicleRepository() {
 /*        this.vehicles.put("KR11", new Car("BMW", "2", 2020, 500.0, "KR11"));
         this.vehicles.put("KR22", new Car("Toyota", "2", 2022, 400.0, "KR22"));
         this.vehicles.put("KR33", new Car("Aud", "2", 2023, 300.0, "KR33"));
@@ -102,9 +103,6 @@ public class VehicleRepository implements IVehicleRepository{
             } catch (IOException e) {
                 System.out.println("Zepsuło się");
             }
-        }
-        public static VehicleRepository getInstance(){
-            return instance;
         }
     }
 

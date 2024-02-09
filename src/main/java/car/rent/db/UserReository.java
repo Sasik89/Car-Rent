@@ -1,19 +1,18 @@
 package car.rent.db;
 
 import car.rent.model.User;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.util.Collection;
 import java.util.HashMap;
 
+@Component
 public class UserReository implements IUserRepository {
-
 
     private final HashMap<String, User> users = new HashMap<>();
 
-    private static final UserReository instance = new UserReository();
-
-   private  UserReository() {
+   UserReository() {
 /*      this.users.put("admin", new User("Adnim", "admin", "0192023a7bbd73250516f069df18b500", User.Role.ADMIN));
         this.users.put("janusz", new User("Janusz", "janusz", "1e6f2ac43951a6721d3d26a379cc7f8b", User.Role.USER));*/
         String file = "F:\\Programowanie\\Nagrania z kursu\\IT Camp 9 FIlmiki\\Zajęcia 2023.10.22 - obejrzane\\Car rent\\car-rent\\src\\main\\resources\\user.txt";
@@ -53,9 +52,5 @@ public class UserReository implements IUserRepository {
         } catch (IOException e) {
             System.out.println("Zepsuło się");
         }
-    }
-
-    public static UserReository getInstance(){
-       return instance;
     }
 }

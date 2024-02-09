@@ -5,6 +5,7 @@ import car.rent.model.LuxuryCar;
 import car.rent.model.User;
 import car.rent.model.Vehicle;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 

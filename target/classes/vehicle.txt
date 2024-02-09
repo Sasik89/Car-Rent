@@ -1,0 +1,12 @@
+Car;BMW;2;2020;500.0;KR11;false
+Car;Toyota;2;2022;400.0;KR22;false
+Car;Aud;2;2023;300.0;KR33;false
+Car;Honda;2;2021;600.0;KR44;false
+Car;Kia;Ceed;2022;200.0;KR55;false
+Bus;Solaris;S2000;2019;1000.0;KR66;false;40;false
+Bus;Mercedes;Turbo;2018;400.0;KR77;false;50;false
+Bus;Solaris;GTR;2017;900.0;KR88;false;50;false
+Truck;Jelcz;HD500;2012;800.0;KR99;false;4000
+LuxuryCar;Ferrari;Italia;2022;6000.0;FERRARI;false
+Motorcycle;Honda;GTS;2017;350.0;KR111;false;true
+LuxuryCar;Bentley;Continental;2022;5000.0;BENTLEY;false

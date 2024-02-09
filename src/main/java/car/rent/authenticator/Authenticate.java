@@ -1,19 +1,25 @@
 package car.rent.authenticator;
 
 import car.rent.db.IUserRepository;
-import car.rent.db.UserReository;
-import car.rent.gui.GUI;
+import car.rent.gui.IGUI;
 import car.rent.model.User;
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class Authenticate implements IAuthenticate {
 
     Scanner scanner = new Scanner(System.in);
-    IUserRepository userReository = UserReository.getInstance();
-    GUI gui = GUI.getInstance();
+    private final IUserRepository userRepository;
+    private final IGUI gui;
     public static String rola;
-    private static final Authenticate instance = new Authenticate();
-    private Authenticate(){}
+    
+    public Authenticate(IUserRepository userRepository, IGUI gui) {
+        this.userRepository = userRepository;
+        this.gui = gui;
+    }
+
     @Override
     public boolean authenticate() {
         int counter = 0;
@@ -21,7 +27,7 @@ public class Authenticate implements IAuthenticate {
             User userFromDB = gui.readUserAndPassword(); //wywołuje raz by nie wpisywać loginu i hasła 2 razy
             String login = userFromDB.getLogin();
             String password = userFromDB.getPassword();
-            for (User user : userReository.getUsers().values()) {
+            for (User user : userRepository.getUsers().values()) {
                 if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
                     System.out.println("Zalogowany!!!");
                     rola = user.getRole().toString();
@@ -32,8 +38,5 @@ public class Authenticate implements IAuthenticate {
             System.out.println("Niepoprawny login bądź hasło");
         }
         return false;
-    }
-    public static Authenticate getInstance(){
-        return instance;
     }
 }

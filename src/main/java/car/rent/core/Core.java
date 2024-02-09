@@ -1,19 +1,24 @@
 package car.rent.core;
 
-import car.rent.authenticator.Authenticate;
+import car.rent.authenticator.IAuthenticate;
 import car.rent.db.IUserRepository;
-import car.rent.db.UserReository;
-import car.rent.db.VehicleRepository;
-import car.rent.gui.GUI;
+import car.rent.db.IVehicleRepository;
+import car.rent.gui.IGUI;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Core {
+    private final IVehicleRepository vehicleRepository;
+    private final IAuthenticate authenticate;
+    private final IUserRepository userRepository;
+    private final IGUI gui;
 
-    final VehicleRepository vehicleRepository = VehicleRepository.getInstance();
-    final Authenticate authenticate = Authenticate.getInstance();
-    final IUserRepository userReository = UserReository.getInstance();
-    final GUI gui = GUI.getInstance();
-    private final static Core instance = new Core();
-    private Core(){}
+    public Core(IVehicleRepository vehicleRepository, IAuthenticate authenticate, IUserRepository userRepository, IGUI gui) {
+        this.vehicleRepository = vehicleRepository;
+        this.authenticate = authenticate;
+        this.userRepository = userRepository;
+        this.gui = gui;
+    }
 
     public void start(){
         boolean run = authenticate.authenticate();
@@ -30,7 +35,7 @@ public class Core {
                     break;
                 case "4":
                     run = false;
-                    userReository.save();
+                    userRepository.save();
                     vehicleRepository.save();
                     break;
                 default:
@@ -38,8 +43,5 @@ public class Core {
                     break;
             }
         }
-    }
-    public static Core getInstance(){
-        return instance;
     }
 }

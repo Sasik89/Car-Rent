@@ -5,17 +5,15 @@ import car.rent.model.LuxuryCar;
 import car.rent.model.User;
 import car.rent.model.Vehicle;
 import org.apache.commons.codec.digest.DigestUtils;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.Scanner;
 
+@Component
 public class GUI implements IGUI {
 
     private final static Scanner scanner = new Scanner(System.in);
-    private final static GUI instance = new GUI();
-
-    private GUI(){}
-    Authenticate authenticate = Authenticate.getInstance();
     @Override
     public String showMenuAndReadChoose() {
         System.out.println("1. List cars");
@@ -60,8 +58,5 @@ public class GUI implements IGUI {
         String login = scanner.nextLine();
         System.out.println("Wpisz hasło");
         return new User(login, DigestUtils.md5Hex(scanner.nextLine()));
-    }
-    public static GUI getInstance(){
-        return instance;
     }
 }

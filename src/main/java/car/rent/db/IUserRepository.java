@@ -1,6 +1,7 @@
 package car.rent.db;
 
 import car.rent.model.User;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 
